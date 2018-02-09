@@ -14,8 +14,10 @@ passport.use(
 			clientSecret: keys.googleClientSecret,
 			callbackURL: '/auth/google/callback'
 		}, 
-		accessToken => {
-			console.log(accessToken);
+		(accessToken, refresuhToken, profile, done) => {
+			console.log('access token: ', accessToken);
+			console.log('refresh token: ', refresuhToken);
+			console.log('profile: ', profile);
 		}
 	)
 );
@@ -26,6 +28,9 @@ app.get('/auth/google', passport.authenticate('google', {
 		scope: ['profile', 'email']
 	})
 );
+
+// Route which exchanges code to recieve user profile. Puts user on hold until request is sent. 
+app.get('/auth/google/callback', passport.authenticate('google'));
 
 
 // Use port provided by Heroku or use port 5000
