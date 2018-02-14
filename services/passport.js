@@ -3,8 +3,21 @@ const GoogleStrat = require('passport-google-oauth20').Strategy;
 const keys = require('../config/keys');
 const mongoose = require('mongoose');
 
-// A mongoose model class with users collection
+// A mongoose model class with users collection.
 const User = mongoose.model('users');
+
+// Turn mongoose model into cookie. Take id of model, and send cookie to user.
+passport.serializeUser((user, done) => {
+	done(null, user.id);
+});
+
+// Take cookie and turn it back into mongoose model.
+passport.deserializeUser((id, done) => {
+	User.findById(id)
+		.then(user => {
+			done(null, user);
+		});
+});
 
 // Create new instance of google passport strategy. Allows users to authenticate
 // through google.
@@ -16,17 +29,19 @@ passport.use(
 			callbackURL: '/auth/google/callback'
 		},
 		// Callback gets called when user profile is sent back to user from google.
-		// Creats new User mongoose instance and saves google id inside db
+		// Creats new User mongoose instance and saves google id inside db.
 		(accessToken, refreshToken, profile, done) => {
 			User.findOne({ googleId: profile.id})
 				.then((existingUser) => {
 					if (existingUser) {
-						// If user exists
+						// If user exists.
 						console.log('User already exists');
+						done(null, existingUser);
 					}
 					else {
-						// If user does not exist, create New user
-						new User({ googleId: profile.id}).save();
+						// If user does not exist, create New user.
+						new User({ googleId: profile.id}).save()
+						.then(user => done(null, user));
 					}
 				})
 
