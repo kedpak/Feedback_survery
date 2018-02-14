@@ -26,7 +26,8 @@ passport.use(
 		{
 			clientID: keys.googleClientID,
 			clientSecret: keys.googleClientSecret,
-			callbackURL: '/auth/google/callback'
+			callbackURL: '/auth/google/callback',
+			proxy: true
 		},
 		// Callback gets called when user profile is sent back to user from google.
 		// Creats new User mongoose instance and saves google id inside db.
@@ -44,7 +45,6 @@ passport.use(
 						.then(user => done(null, user));
 					}
 				})
-
 		}
 	)
 );
