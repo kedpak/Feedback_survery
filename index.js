@@ -10,6 +10,7 @@ require('./services/passport');
 mongoose.connect(keys.mongoDBuri);
 const app = express();
 
+
 // Create cookie session for user to send to server to authenticate user.
 app.use(
 	cookieSession({
