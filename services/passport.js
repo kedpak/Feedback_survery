@@ -31,9 +31,8 @@ passport.use(
 		},
 		// Callback gets called when user profile is sent back to user from google.
 		// Creats new User mongoose instance and saves google id inside db.
-		(accessToken, refreshToken, profile, done) => {
-			User.findOne({ googleId: profile.id})
-				.then((existingUser) => {
+		async (accessToken, refreshToken, profile, done) => {
+			const existingUser = await User.findOne({ googleId: profile.id})
 					if (existingUser) {
 						// If user exists.
 						console.log('User already exists');
@@ -41,10 +40,9 @@ passport.use(
 					}
 					else {
 						// If user does not exist, create New user.
-						new User({ googleId: profile.id}).save()
-						.then(user => done(null, user));
+						const user = await new User({ googleId: profile.id}).save()
+						done(null, user);
 					}
-				})
 		}
 	)
 );
