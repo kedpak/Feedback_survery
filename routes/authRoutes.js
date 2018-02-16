@@ -17,7 +17,7 @@ module.exports = app => {
 		}
 	);
 
-	// Logs user out. Takes cookie and kills id inside cookie. Redirect back to initial dashboard.
+	// Logs user out. Takes cookie and kills id inside cookie. Redirect back to initial Landing page.
 	app.get('/api/logout', (req, res) => {
 		req.logout();
 		res.redirect('/');
