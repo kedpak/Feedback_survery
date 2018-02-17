@@ -1,9 +1,11 @@
 const keys = require('../config/keys');
 const stripe = require('stripe')(keys.stripeSecretkey);
+const requireLogin = require('../middlewares/requireLogin');
 
 // Posts submitted payment data to api and charges user for credit card payment.
 module.exports = app => {
-  app.post('/api/stripe', async (req, res) => {
+  app.post('/api/stripe', requireLogin, async (req, res) => {
+    // Create charge payment.
     const charge = await stripe.charges.create({
         amount: 500,
         currency: "usd",
