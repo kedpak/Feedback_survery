@@ -6,7 +6,6 @@ import * as actions from '../actions';
 // Handles stripe payments.
 class Payments extends Component {
   render() {
-
     return (
       <StripeCheckout
         name="Feedbax"
