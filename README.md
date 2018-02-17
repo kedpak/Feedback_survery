@@ -13,7 +13,13 @@ The user will sign up via a google authentication. User then pays for number of 
 * mongoose
 * express
 * cookie-session
-* 
+* react-router-dom
+* react-redux
+* redux-thunk
+* stripe
+* body-parser
+* materialize
+ 
 ### Built with
 * Node.js
 * MongoDb
