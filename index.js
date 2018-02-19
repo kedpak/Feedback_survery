@@ -38,8 +38,7 @@ if (process.env.NODE_ENV === 'production') {
 	const path = require('path');
 	app.get('*', (req, res) => {
 		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-	})
-
+	});
 }
 
 // Use port provided by Heroku or use port 5000
