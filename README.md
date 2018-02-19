@@ -33,3 +33,5 @@ Test with
 * MongoDb
 * React/Redux
 
+## Authors
+Kevin Pak - kedpak10@gmail.com
