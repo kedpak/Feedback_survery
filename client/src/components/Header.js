@@ -12,12 +12,14 @@ class Header extends Component {
       case null:
         return
       case false:
+        // If user is logged out display this.
         return (
           <li>
             <a href="/auth/google">Login With Google Account</a>
           </li>
         )
       default:
+        // If user is logged in.
         return [
           <li key="1"><Payments /></li>,
           <li key="2" style={{margin: '0 10px'}}>
@@ -45,7 +47,7 @@ class Header extends Component {
   }
 }
 
-// Calls entire state object out of redux store
+// Calls entire state object out of redux store.
 function mapStateToProps({ auth }) {
   return { auth };
 }

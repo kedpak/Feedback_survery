@@ -16,7 +16,6 @@ module.exports = app => {
       req.user.userCredits += 5;
       // Save is async so after save is complete, updated user model is returned.
       const user = await req.user.save();
-
       res.send(user);
   });
 };

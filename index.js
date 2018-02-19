@@ -28,6 +28,20 @@ require('./routes/authRoutes')(app);
 // Call paymentRoutes function with app argument.
 require('./routes/paymentRoutes')(app);
 
+// Call if in production mode.
+if (process.env.NODE_ENV === 'production') {
+	// Express serves production assets. ie: main.js, main.css.
+	app.use(express.static('client/build'));
+
+
+	// Express will serve an index.html file if no other routes are found.
+	const path = require('path');
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+	})
+
+}
+
 // Use port provided by Heroku or use port 5000
 app.listen(process.env.PORT || 5000, "0.0.0.0", function() {
 	console.log("Listening on Port");
