@@ -10,7 +10,10 @@ const surveySchema = new Schema ({
   recipients: [RecipientSchema],
   yes: { type: Number, default: 0},
   no: { type: Number, default: 0},
-  _user: { type: Schema.Types.ObjectId, ref: 'User'} // every survey belongs to a specific user. type is id of User this record belongs to. 
+  // every survey belongs to a specific user. type is id of User this record belongs to.
+  _user: { type: Schema.Types.ObjectId, ref: 'User'},
+  dateSent: Date,
+  lastResponded: Date
 });
 
 mongoose.model('surveys', surveySchema);
