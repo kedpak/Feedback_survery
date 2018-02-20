@@ -5,6 +5,7 @@ const passport = require('passport');
 const keys = require('./config/keys');
 const bodyParser = require('body-parser');
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 // Connect to mongo db
@@ -45,3 +46,5 @@ if (process.env.NODE_ENV === 'production') {
 app.listen(process.env.PORT || 5000, "0.0.0.0", function() {
 	console.log("Listening on Port");
 });
+
+module.exports={app};
