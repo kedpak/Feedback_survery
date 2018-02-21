@@ -27,6 +27,7 @@ Test with
 * stripe
 * body-parser
 * materialize
+* sendgrid
  
 ### Built with
 * Node.js
