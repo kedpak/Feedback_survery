@@ -12,7 +12,10 @@ module.exports = app => {
       title,
       subject,
       body,
-      recipients: 
+      // Split string at comma and map through all emails. Return new object for each with email prop.
+      recipients: recipients.split(',').map(email => ({ email }),
+      _user: req.user.id,
+      dateSent: Date.now()
     });
   });
 };
