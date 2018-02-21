@@ -28,6 +28,7 @@ app.use(passport.session());
 require('./routes/authRoutes')(app);
 // Call paymentRoutes function with app argument.
 require('./routes/paymentRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 // Call if in production mode.
 if (process.env.NODE_ENV === 'production') {
