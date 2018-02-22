@@ -19,8 +19,8 @@ module.exports = app => {
       dateSent: Date.now()
     });
 
-    // Initialize Mailer with survey arguments and template. 
+    // Initialize Mailer with survey arguments and template.
     const mailer = new Mailer(survey, surveyTemplate(survey));
-
+    mailer.send();
   });
 };
