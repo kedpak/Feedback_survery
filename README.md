@@ -28,6 +28,7 @@ Test with
 * body-parser
 * materialize
 * sendgrid
+* redux-form
  
 ### Built with
 * Node.js
