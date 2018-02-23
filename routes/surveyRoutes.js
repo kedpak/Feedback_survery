@@ -21,6 +21,17 @@ module.exports = app => {
 
     // Initialize Mailer with survey arguments and template.
     const mailer = new Mailer(survey, surveyTemplate(survey));
-    await mailer.send();
+
+    try {
+      await mailer.send();
+      // Save survey.
+      await survey.save();
+      //Deduct one credit from user account, save as async and then send back to browser.
+      req.user.credits -= 1;
+      const user = await req.user.save();
+      res.send(user);
+    } catch (err) {
+      res.status(422).send(err);
+    }
   });
 };
