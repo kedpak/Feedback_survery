@@ -27,7 +27,7 @@ module.exports = app => {
       // Save survey.
       await survey.save();
       //Deduct one credit from user account, save as async and then send back to browser.
-      req.user.credits -= 1;
+      req.user.userCredits -= 1;
       const user = await req.user.save();
       res.send(user);
     } catch (err) {
