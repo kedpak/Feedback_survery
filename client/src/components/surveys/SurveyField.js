@@ -1,10 +1,12 @@
 import React from 'react';
 
 // Handles individual field logic, for the inputs of surveyForm.
-export default () => {
+// input is automatically grabbed from the props object.
+export default ({ input }) => {
   return (
     <div>
-      <input />
+      // All properties of input will be passed into the input div.
+      <input  {...input}/>
     </div>
   );
 };

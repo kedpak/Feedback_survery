@@ -4,7 +4,6 @@ import SurveyField from './SurveyField';
 
 // Shows form for user to add comonent.
 class SurveyForm extends Component {
-
   renderFields(){
     return (
       <div>
@@ -16,7 +15,7 @@ class SurveyForm extends Component {
     return (
       <div>
         <form onSubmit={this.props.handleSubmit(values => console.log(values))}>
-          {this.renderFields}
+          {this.renderFields()}
           <button type="submit">Submit</button>
         </form>
       </div>
