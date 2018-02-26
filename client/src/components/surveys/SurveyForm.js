@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
 const FIELDS = [
-  { label: 'Survey Title', name: 'title'},
-  { label: 'Subject line', name: 'subject'},
-  { label: 'Email Body', name: 'body'},
-  { label: 'Recipient List', name: 'emails'}
+  { label: 'Survey Title', name: 'title', errMsg: 'Please provide a title!'},
+  { label: 'Subject line', name: 'subject', errMsg: 'Please provide a subject!'},
+  { label: 'Email Body', name: 'body', errMsg: 'Please provide a body!'},
+  { label: 'Recipient List', name: 'emails', errMsg: 'Please provide a list of emails!'}
 ];
 // Shows form for user to add comonent.
 class SurveyForm extends Component {
@@ -29,7 +29,6 @@ class SurveyForm extends Component {
           Next
           <i className="material-icons right">done</i>
           </button>
-
         </form>
       </div>
     );
@@ -40,11 +39,11 @@ class SurveyForm extends Component {
 // Returns error if not.
 function validate(values) {
   const errors = {};
-
-  if (!values.title) {
-    errors.title = 'Please provide a title!';
-
-  }
+  _.each(FIELDS, ({ name, errMsg }) => {
+    if (!values[name]) {
+      errors[name] = errMsg;
+    }
+  });
   return errors;
 }
 // When using redux form, connection to store is done with reduxForm()
