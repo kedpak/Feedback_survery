@@ -36,7 +36,19 @@ class SurveyForm extends Component {
   }
 }
 
+// Validates if field inputs are inputted with correct format.
+// Returns error if not. 
+function validate(values) {
+  const errors = {};
+
+  if (!values.title) {
+    errors.title 'Please provide a title!';
+
+  }
+  return errors;
+}
 // When using redux form, connection to store is done with reduxForm()
 export default reduxForm({
+  validate,
   form: 'surveyForm'
 })(SurveyForm);
