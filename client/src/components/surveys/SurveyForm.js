@@ -37,12 +37,12 @@ class SurveyForm extends Component {
 }
 
 // Validates if field inputs are inputted with correct format.
-// Returns error if not. 
+// Returns error if not.
 function validate(values) {
   const errors = {};
 
   if (!values.title) {
-    errors.title 'Please provide a title!';
+    errors.title = 'Please provide a title!';
 
   }
   return errors;
