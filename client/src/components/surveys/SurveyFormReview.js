@@ -7,3 +7,5 @@ const SurveyReview = () => {
     </div>
   )
 }
+
+export default SurveyReview;

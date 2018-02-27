@@ -6,14 +6,16 @@ import SurveyFormReview from './SurveyFormReview';
 class SurveyNew extends Component {
   state = {
     showReview: false
-  }
+  };
 
   renderContent() {
     if (this.state.showFormReview) {
-      return <SurveyFormReview >
+      return <SurveyFormReview />
     }
-    return <surveyForm />
-  }
+    return (<surveyForm onSurveySubmit={() => this.setState({showReview: true })}
+  />)
+
+}
 
   render() {
     return (
