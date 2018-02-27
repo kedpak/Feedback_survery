@@ -3,6 +3,7 @@ import { reduxForm, Field } from 'redux-form';
 import SurveyField from './SurveyField';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
+import validateEmails from '../../utils/validateEmails';
 
 const FIELDS = [
   { label: 'Survey Title', name: 'title', errMsg: 'Please provide a title!'},
@@ -44,6 +45,8 @@ function validate(values) {
       errors[name] = errMsg;
     }
   });
+  errors.emails = validateEmails(values.emails || '');
+
   return errors;
 }
 // When using redux form, connection to store is done with reduxForm()
