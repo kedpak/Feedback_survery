@@ -51,5 +51,6 @@ function validate(values) {
 // When using redux form, connection to store is done with reduxForm()
 export default reduxForm({
   validate,
-  form: 'surveyForm'
+  form: 'surveyForm',
+  destroyOnUnmount: false
 })(SurveyForm);
