@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import formFields from './formFields';
 import _ from 'lodash';
 import * as actions from '../../actions';
+import { withRouter } from 'react-router-dom';
 
 // Allow user to review their input fields before final submission.
-const SurveyReview = ({ onCancel, formValues, submitSurvey}) => {
+const SurveyReview = ({ onCancel, formValues, submitSurvey, history}) => {
 
   const fieldList = _.map(formFields, ({ name, label }) => {
     return (
@@ -29,7 +30,7 @@ const SurveyReview = ({ onCancel, formValues, submitSurvey}) => {
       Back
       </button>
       <button
-      onClick={() => submitSurvey(formValues)}
+      onClick={() => submitSurvey(formValues, history)}
       className="green white-text btn-flat right"
       >
         Submit Survey
@@ -47,4 +48,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, actions)(SurveyReview);
+export default connect(mapStateToProps, actions)(withRouter(SurveyReview));

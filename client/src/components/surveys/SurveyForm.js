@@ -42,7 +42,7 @@ function validate(values) {
       errors[name] = errMsg;
     }
   });
-  errors.emails = validateEmails(values.emails || '');
+  errors.recipients = validateEmails(values.recipients || '');
   return errors;
 }
 // When using redux form, connection to store is done with reduxForm()
