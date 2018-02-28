@@ -46,7 +46,6 @@ function validate(values) {
     }
   });
   errors.emails = validateEmails(values.emails || '');
-
   return errors;
 }
 // When using redux form, connection to store is done with reduxForm()
