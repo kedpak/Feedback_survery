@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SurveyForm from './SurveyForm';
 import SurveyFormReview from './SurveyFormReview';
-
+import { reduxForm } from 'redux-form';
 
 // SurveyNew displays the Survey Form and and the review of survey.
 class SurveyNew extends Component {
@@ -28,4 +28,6 @@ class SurveyNew extends Component {
   }
 }
 
-export default SurveyNew;
+export default reduxForm({
+  form: 'surveyForm'
+})(SurveyNew);
