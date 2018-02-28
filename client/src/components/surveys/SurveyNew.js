@@ -8,6 +8,7 @@ class SurveyNew extends Component {
     showReview: false
   };
 
+  // Render form if showReview is false. Otherwise show survey form. 
   renderContent() {
     if (this.state.showReview) {
       return (<SurveyFormReview

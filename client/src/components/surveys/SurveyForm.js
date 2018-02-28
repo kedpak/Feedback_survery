@@ -4,13 +4,10 @@ import SurveyField from './SurveyField';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import validateEmails from '../../utils/validateEmails';
+import formFields from './formFields';
 
-const FIELDS = [
-  { label: 'Survey Title', name: 'title', errMsg: 'Please provide a title!'},
-  { label: 'Subject line', name: 'subject', errMsg: 'Please provide a subject!'},
-  { label: 'Email Body', name: 'body', errMsg: 'Please provide a body!'},
-  { label: 'Recipient List', name: 'emails', errMsg: 'Please provide a list of emails!'}
-];
+const FIELDS = formFields;
+
 // Shows form for user to add comonent.
 class SurveyForm extends Component {
   renderFields(){
